@@ -6,14 +6,14 @@ import os
 
 from keras.models import  load_model
 from keras.preprocessing.image import load_img,img_to_array
-from keras.applications.xception import preprocess_input
+from keras.applications.mobilenet_v2 import preprocess_input
 
 from flask import Flask, request , render_template
 
 app = Flask(__name__)
 
 #load model
-model = load_model("Model_xception.h5")
+model = load_model("Model_mobilenet.h5")
 print("Model Loaded!!")
 
 IMAGE_FOLDER = os.getcwd() + "/static"
@@ -40,7 +40,7 @@ def predictImage(path):
  'pav_bhaji',
  'pizza',
  'samosa']
-    img = load_img(path,target_size=(299,299,3))
+    img = load_img(path,target_size=(224,224,3))
     img = img_to_array(img)
     img = np.expand_dims(img,axis=0)
     img = preprocess_input(img)
