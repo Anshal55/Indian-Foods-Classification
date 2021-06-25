@@ -13,7 +13,7 @@ from flask import Flask, request , render_template
 app = Flask(__name__)
 
 #load model
-model = load_model("Model_mobilenet.h5")
+model = load_model("model_small.h5")
 print("Model Loaded!!")
 
 IMAGE_FOLDER = os.getcwd() + "/static"
